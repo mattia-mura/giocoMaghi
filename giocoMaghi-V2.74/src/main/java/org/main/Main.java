@@ -32,7 +32,12 @@ public class Main {
                         System.out.print("\nInserisci il nome del mago da inserire: ");
                         nome = tastiera.next();
                         nome = Tools.rimuoviSpazi(nome);
+                        if ( ricerca(v,nome) != -1){
+                            System.out.println("Nome già in uso, scegliene un altro!");
+                            nome="";
+                        }
                     } while (nome.equals(""));
+
                     if (v.add(new Mago(nome, totale, codaTurni, duelloInCorso))) {
                         System.out.println("Mago aggiunto con successo");
                         if (primo) {
