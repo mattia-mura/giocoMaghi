@@ -1,1 +1,14 @@
-﻿
+﻿matteo è pronto e si mette in coda.
+matteo infligge 1 a mattia
+mattia ora ha 9 vita.
+mattia è pronto e si mette in coda.
+mattia infligge 4 a matteo
+matteo ora ha 16 vita.
+matteo è pronto e si mette in coda.
+matteo infligge 9 a mattia
+mattia ora ha 0 vita.
+mattia è stato sconfitto!
+matteo dichiara: ho vinto lo scontro!
+_______________________
+mattia dichiara: sono stato sconfitto.
+_______________________

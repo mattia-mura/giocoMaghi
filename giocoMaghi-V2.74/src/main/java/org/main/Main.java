@@ -4,11 +4,11 @@ import org.classi.Mago;
 import org.classi.Tools;
 import org.classi.Menu;
 import org.classi.Trascrittore;
-
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner tastiera = new Scanner(System.in);
         Menu menu = new Menu();
@@ -19,6 +19,7 @@ public class Main {
         int totale = -1;
 
         do {
+
             Queue<Mago> codaTurni = new LinkedList<>();
             AtomicBoolean duelloInCorso = new AtomicBoolean(true);
 
@@ -117,6 +118,7 @@ public class Main {
                             }
                         }
                     }
+                    magnaMorti(v);
                 } break;
 
                 case 0:
@@ -129,12 +131,21 @@ public class Main {
 
         System.out.println("Programma terminato.");
         Trascrittore.closeAll();
-    }
+    }//main
 
     private static int ricerca(Vector<Mago> v, String s) {
         for (int i = 0; i < v.size(); i++) {
             if (v.get(i).getNome().equals(s)) return i;
         }
         return -1;
-    }
+    }//ricerca
+
+    private static void magnaMorti(Vector<Mago> v){
+        for (int i = 0; i < v.size(); i++) {
+            if( v.get(i).getVita() <= 0 ){
+                v.remove(i);
+            }
+        }
+    }//magnaMorti
+
 }

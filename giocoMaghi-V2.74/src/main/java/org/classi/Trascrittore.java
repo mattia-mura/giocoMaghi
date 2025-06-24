@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Trascrittore {
-    private static final String PATH = "C:\\Users\\mattia.mu\\Desktop\\giocoMaghi-V1.91 - Copia\\src\\files\\cronologiaIncontri.txt";
+    private static final String PATH = "C:\\Users\\mattia.mu\\Desktop\\giocoMaghi-V2.74\\src\\files\\cronologiaIncontri.txt";
     private static BufferedWriter writer;
 
     static {
