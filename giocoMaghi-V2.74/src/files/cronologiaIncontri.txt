@@ -12,3 +12,100 @@ matteo dichiara: ho vinto lo scontro!
 _______________________
 mattia dichiara: sono stato sconfitto.
 _______________________
+kiky è pronto e si mette in coda.
+kiky entra in modalità 'Adrenalinico': velocità raddoppiata!
+kiky infligge 5 a lolli
+lolli ora ha 75 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 4 a lolli
+lolli ora ha 71 vita.
+kiky è pronto e si mette in coda.
+kiky termina 'Adrenalinico': velocità ripristinata.
+kiky infligge 0 a lolli
+lolli ora ha 71 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 6 a kiky
+kiky ora ha 34 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 6 a lolli
+lolli ora ha 65 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 1 a lolli
+lolli ora ha 64 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 6 a lolli
+lolli ora ha 58 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 0 a kiky
+kiky ora ha 34 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 7 a lolli
+lolli ora ha 51 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 2 a lolli
+lolli ora ha 49 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 5 a lolli
+lolli ora ha 44 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 3 a kiky
+kiky ora ha 31 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 2 a lolli
+lolli ora ha 42 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 0 a lolli
+lolli ora ha 42 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 6 a lolli
+lolli ora ha 36 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 0 a kiky
+kiky ora ha 31 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 7 a lolli
+lolli ora ha 29 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 3 a lolli
+lolli ora ha 26 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 4 a lolli
+lolli ora ha 22 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 3 a kiky
+kiky ora ha 28 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 3 a lolli
+lolli ora ha 19 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 3 a lolli
+lolli ora ha 16 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 2 a lolli
+lolli ora ha 14 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 0 a kiky
+kiky ora ha 28 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 4 a lolli
+lolli ora ha 10 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 3 a lolli
+lolli ora ha 7 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 2 a lolli
+lolli ora ha 5 vita.
+lolli è pronto e si mette in coda.
+lolli infligge 3 a kiky
+kiky ora ha 25 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 3 a lolli
+lolli ora ha 2 vita.
+kiky è pronto e si mette in coda.
+kiky infligge 5 a lolli
+lolli ora ha -3 vita.
+lolli è stato sconfitto!
+kiky dichiara: ho vinto lo scontro!
+_______________________
+lolli dichiara: sono stato sconfitto.
+_______________________
