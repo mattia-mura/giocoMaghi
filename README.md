@@ -1,1 +1,119 @@
-# giocoMaghi
+# 🧙‍♂️ Progetto: “Duello tra Maghi – Simulazione Multithread”
+
+### 🎯 Obiettivi didattici
+
+* Comprendere e usare i **thread** in modo controllato
+* Sincronizzare l’accesso a **variabili condivise** (es. punti vita, stato di turno)
+* Simulare un flusso di gioco **con logica a turni** e **temporizzazione basata su statistiche**
+* Gestire **eventi asincroni e condizioni speciali** (trigger di abilità, eventi casuali)
+
+---
+
+## 📌 Fase 1: Duello Base
+
+### 1.1. **Creazione dei Maghi**
+
+* Due oggetti `Mago`, ciascuno con:
+
+  * **Nome**
+  * Statistiche (valori interi da 0 a 10) generate casualmente:
+
+    * `forza`
+    * `resistenza`
+    * `velocità`
+    * `vita`
+* La **somma delle caratteristiche** deve essere uguale per entrambi i maghi (es. 30), ma con **distribuzione casuale**.
+* I **punti vita reali** sono `10 * vita`.
+
+### 1.2. **Visualizzazione iniziale**
+
+* Stampare in console le **schede dei maghi** prima dell'inizio:
+
+  * Nome
+  * Valori statistici
+  * Vita totale
+
+### 1.3. **Meccanica dei Turni**
+
+* Il **mago con più velocità inizia**.
+* Ogni mago gira in un **thread separato**:
+
+  * Il thread attende per un tempo calcolato in base a `velocità`
+  * Una volta passato il tempo, **prenota la sua azione**
+  * L’azione viene eseguita solo quando è **il suo turno** (rispettando l’ordine FIFO)
+  * Se il thread è pronto ma non è il suo turno, attende e controlla periodicamente
+
+**Formula consigliata per tempo di attesa:**
+
+```python
+tempo_attesa = max(1.0, 10.0 / velocita)
+```
+
+### 1.4. **Calcolo Attacco e Danno**
+
+* L’attacco è: `roll d10 + (forza // 4)`
+* La resistenza è il valore fisso `resistenza`
+* **Regole per il danno:**
+
+| Attacco vs Resistenza      | Danno Inflitto |
+| -------------------------- | -------------- |
+| Attacco > resistenza + 30% | 100%           |
+| Attacco > resistenza       | 75% (−25%)     |
+| Attacco < resistenza       | 50% (−50%)     |
+| Attacco < resistenza − 30% | 25% (−75%)     |
+
+* Il danno si **arrotonda per eccesso**
+
+### 1.5. **Vittoria e Fine Gioco**
+
+* Il gioco termina quando uno dei due maghi ha `punti_vita <= 0`
+* Annuncio del vincitore
+
+---
+
+## 🚀 Fase 2: Caratteristiche Speciali
+
+Ogni mago ha una sola tra le seguenti caratteristiche **speciali**:
+
+### 2.1. Lista Caratteristiche Extra
+
+| Nome                       | Effetto                                                                                                              |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Addestrato**             | Il mago si e' allenato duramente, tutte le sue statistiche aumentano di 2 fino al raggiungimento del limite massimo  |
+| **Adrenalinico**           | Se la vita scende sotto il 30%, per 3 turni la velocità è **raddoppiata** (anche oltre il massimo)                   |
+| **Corpo d'acciaio**        | Con **15-20% di probabilità**, riduce i danni subiti di **25%** (dopo il calcolo normale)                            |
+| **Ispirato dalla magia**   | Con **5-10% di probabilità**, il danno inflitto **ignora la resistenza dell’avversario** (ma non il corpo d’acciaio) |
+| **Volontà insormontabili** | Con **10-15% di probabilità**, recupera **1d4 punti vita** all’inizio del turno                                      |
+
+### 2.2. Meccanica
+
+* La caratteristica viene **controllata all’inizio del turno**
+* Gli effetti si applicano **prima** dell’attacco
+
+---
+
+## 🔒 Aspetti Thread-Safe
+
+* L’accesso a variabili condivise (es. `punti_vita`, `turno_corrente`, `coda_azioni`) **deve essere protetto** da `Lock` o `Semaphore`
+* Suggerimento: usare una `Queue` thread-safe per gestire le **prenotazioni di azione**
+* Utilizzare `threading.Condition` o `Event` per coordinare i turni
+
+---
+
+## 🧪 Suggerimenti per Test e Debug
+
+* Stampare a console:
+
+  * Tempo di attesa
+  * Azioni eseguite (es. attacco, danno)
+  * Attivazione di caratteristiche speciali
+  * Vita rimanente dopo ogni turno
+* Usare colori o simboli per distinguere i maghi
+
+---
+
+## 📦 Estensioni Possibili (extra-time)
+
+* Aggiunta di 3 o più maghi → battaglia tutti contro tutti
+* Salvataggio dei log in un file
+* Inserimento di un’interfaccia semplice
