@@ -24,7 +24,6 @@ public class Mago extends Thread {
     private int squadra;
     private static final String[] COLORI = {
             "\033[0m",  // Text Reset
-            "\033[0;30m",   // BLACK
             "\033[0;31m",     // RED
             "\033[0;32m",   // GREEN
             "\033[0;33m",  // YELLOW
@@ -32,6 +31,7 @@ public class Mago extends Thread {
             "\033[0;35m",  // PURPLE
             "\033[0;36m",    // CYAN
             "\033[0;37m",   // WHITE
+            "\033[0;30m",   // BLACK
     };
     private String coloreSquadra;
     private String coloreElemento;
@@ -194,7 +194,14 @@ public class Mago extends Thread {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         } finally {
-            if (this.livelloVisioneLog<=2){System.out.println(coloreSquadra + nome + "\u001B[0m" +(vita > 0 ? " dichiara: ho vinto il duello!" : " dichiara: sono stato sconfitto."));}
+            if (this.livelloVisioneLog<=2){
+                if (this.squadra != -1) {
+                    System.out.println(coloreSquadra + nome + (vita > 0 ? " dichiara: ho vinto il duello!" : " dichiara: sono stato sconfitto.") + "\u001B[0m");
+                }
+                else{
+                    System.out.println(coloreElemento + nome + (vita > 0 ? " dichiara: ho vinto il duello!" : " dichiara: sono stato sconfitto.") + "\u001B[0m");
+                }
+            }
         }
     }
 
@@ -334,13 +341,11 @@ public class Mago extends Thread {
         }
         Vector<Mago> potenzialiNemici = new Vector<>();
         for (Mago m : ListaMaghi.getMaghi()) {
-            if (m != this && m.getVita() > 0) {
-                if (this.getSquadra() != -1 && m.getSquadra() != -1) {
-                    if (m.getSquadra() != this.getSquadra()) {
-                        potenzialiNemici.add(m);
-                    }
-                } else {
+            if ( m.getVita() > 0) {
+                if (m.getSquadra() != this.getSquadra()) {
+                    //if (m != this) {
                     potenzialiNemici.add(m);
+                    //}
                 }
             }
         }
