@@ -343,9 +343,9 @@ public class Mago extends Thread {
         for (Mago m : ListaMaghi.getMaghi()) {
             if ( m.getVita() > 0) {
                 if (m.getSquadra() != this.getSquadra()) {
-                    //if (m != this) {
+                    if (!m.equals(this)) {
                     potenzialiNemici.add(m);
-                    //}
+                    }
                 }
             }
         }
