@@ -93,7 +93,7 @@ public class Mago extends Thread {
             int percentuale = 5 + rnd.nextInt(6);
             if (chance <= percentuale) {
                 System.out.println(nome + " attiva 'Ispirato dalla magia': ignora resistenza!");
-                Trascrittore.scrivi(nome + " attiva 'Ispirato dalla magia': ignora resistenza!");
+//                Trascrittore.scrivi(nome + " attiva 'Ispirato dalla magia': ignora resistenza!");
                 ignoraResistenza = true;
             }
         }
@@ -151,7 +151,7 @@ public class Mago extends Thread {
 
                 int danno = calcolaAttacco();
                 System.out.println(nome + " infligge " + danno + " a " + nemico.getNome());
-                Trascrittore.scrivi(nome + " infligge " + danno + " a " + nemico.getNome());
+//                Trascrittore.scrivi(nome + " infligge " + danno + " a " + nemico.getNome());
                 nemico.subisciDanno(danno);
 
                 synchronized (codaTurni) {
@@ -178,7 +178,8 @@ public class Mago extends Thread {
                 forza = Math.min(forza + 2, 10);
                 resistenza = Math.min(resistenza + 2, 10);
                 velocità = Math.min(velocità + 2, 10);
-                Trascrittore.scrivi(nome + " usa 'Addestrato': statistiche aumentate!");
+                System.out.println(nome + " usa 'Addestrato': statistiche aumentate!");
+//                Trascrittore.scrivi(nome + " usa 'Addestrato': statistiche aumentate!");
                 break;
 
             case "Adrenalinico":
@@ -187,14 +188,16 @@ public class Mago extends Thread {
                         adrenalinaAttivata = true;
                         turniAdrenalina = 3;
                         velocità = velocitaOriginale * 2;
-                        Trascrittore.scrivi(nome + " entra in modalità 'Adrenalinico'!");
+                        System.out.println(nome + " entra in modalità 'Adrenalinico'!");
+//                        Trascrittore.scrivi(nome + " entra in modalità 'Adrenalinico'!");
                     }
                 }
                 if (turniAdrenalina > 0) {
                     turniAdrenalina--;
                     if (turniAdrenalina == 0) {
                         velocità = velocitaOriginale;
-                        Trascrittore.scrivi(nome + " termina 'Adrenalinico': velocità normale.");
+                        System.out.println(nome + " termina 'Adrenalinico': velocità normale.");
+//                        Trascrittore.scrivi(nome + " termina 'Adrenalinico': velocità normale.");
                     }
                 }
                 break;
@@ -205,7 +208,8 @@ public class Mago extends Thread {
                 if (chance <= percentuale) {
                     int guarigione = rnd.nextInt(4) + 1;
                     vita += guarigione;
-                    Trascrittore.scrivi(nome + " usa 'Volontà insormontabili': recupera " + guarigione + " vita!");
+                    System.out.println(nome + " usa 'Volontà insormontabili': recupera " + guarigione + " vita!");
+//                    Trascrittore.scrivi(nome + " usa 'Volontà insormontabili': recupera " + guarigione + " vita!");
                 }
                 break;
         }
@@ -217,12 +221,13 @@ public class Mago extends Thread {
             int percentuale = 15 + rnd.nextInt(6);
             if (chance <= percentuale) {
                 danno = (int) (danno * 0.75);
-                Trascrittore.scrivi(nome + " attiva 'Corpo d'acciaio': danno ridotto!");
+                System.out.println(nome + " attiva 'Corpo d'acciaio': danno ridotto!");
+//                Trascrittore.scrivi(nome + " attiva 'Corpo d'acciaio': danno ridotto!");
             }
         }
 
         this.vita -= danno;
-        Trascrittore.scrivi(this.nome + " ora ha " + this.vita + " vita.");
+//        Trascrittore.scrivi(this.nome + " ora ha " + this.vita + " vita.");
 
         if (this.vita <= 0) {
             Trascrittore.scrivi(this.nome + " è stato sconfitto!");
@@ -233,11 +238,12 @@ public class Mago extends Thread {
                     m.assegnaNuovoNemico2();
                     powerUP(m);
                     System.out.println(m.getNome() + " ha ricevuto un powerUP!");
-                    Trascrittore.scrivi(m.getNome() + " ha ricevuto un powerUP!");
+//                    Trascrittore.scrivi(m.getNome() + " ha ricevuto un powerUP!");
                 }
             }
 
             if (ListaMaghi.getLength() == 1) {
+                System.out.println("Il duello è finito! " + ListaMaghi.getMago(0).getNome() + " è il vincitore!");
                 Trascrittore.scrivi("Il duello è finito! " + ListaMaghi.getMago(0).getNome() + " è il vincitore!");
                 duelloInCorso.set(false);
                 synchronized (codaTurni) {
@@ -282,7 +288,7 @@ public class Mago extends Thread {
         }
         nemico = potenzialiNemici.get(rnd.nextInt(potenzialiNemici.size()));
         System.out.println(nome + " ha scelto " + nemico.getNome() + " come nuovo nemico!");
-        Trascrittore.scrivi(nome + " ha scelto " + nemico.getNome() + " come nuovo nemico!");
+//        Trascrittore.scrivi(nome + " ha scelto " + nemico.getNome() + " come nuovo nemico!");
     }
 
     public void powerUP(Mago maghettoFurbetto) {
@@ -325,4 +331,6 @@ public class Mago extends Thread {
                 "-Elemento='" + elemento + '\'' + '\n' +
                 "---------------------------------------" + '\n';
     }
+
+
 }

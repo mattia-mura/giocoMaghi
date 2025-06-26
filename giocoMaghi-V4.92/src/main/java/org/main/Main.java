@@ -341,24 +341,45 @@ public class Main {
         Trascrittore.closeAll();
     }
 
-    private static void magnaMorti() {
-        Vector<Mago> maghi = ListaMaghi.getMaghi();
-        for (int i = 0; i < maghi.size(); i++) {
-            if (maghi.get(i).getVita() <= 0) {
-                Mago morto = maghi.get(i);
-                System.out.println(morto.getNome() + " è morto e viene rimosso dalla battaglia!");
+//    private static void magnaMorti() {
+//        Vector<Mago> maghi = ListaMaghi.getMaghi();
+//        for (int i = 0; i < maghi.size(); i++) {
+//            if (maghi.get(i).getVita() <= 0) {
+//                Mago morto = maghi.get(i);
+//                System.out.println(morto.getNome() + " è morto e viene rimosso dalla battaglia!");
+//
+//                // Rimuovi dalle squadre se necessario
+//                if (morto.getSquadra() != -1) {
+//                    SquadMaghi.rimuoviMago(morto);
+//                }
+//
+//                maghi.remove(i);
+//                i--;
+//            }
+//        }
+//
+//        // Pulisci le squadre vuote
+//        SquadMaghi.pulisciSquadreVuote();
+//    }
 
-                // Rimuovi dalle squadre se necessario
-                if (morto.getSquadra() != -1) {
-                    SquadMaghi.rimuoviMago(morto);
+    public static void magnaMorti() {
+        synchronized (ListaMaghi.getMaghi()) {
+            Vector<Mago> copiaMaghi = new Vector<>(ListaMaghi.getMaghi());
+
+            Vector<Mago> morti = new Vector<>();
+            for (Mago m : copiaMaghi) {
+                if (m.getVita()<=0) {
+                    morti.add(m);
                 }
+            }
 
-                maghi.remove(i);
-                i--;
+            for (Mago morto : morti) {
+                ListaMaghi.removeMago(morto);
+                SquadMaghi.rimuoviMago(morto);
             }
         }
-
-        // Pulisci le squadre vuote
-        SquadMaghi.pulisciSquadreVuote();
     }
+
+
 }
+

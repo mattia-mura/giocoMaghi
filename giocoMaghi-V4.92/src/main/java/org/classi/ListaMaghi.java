@@ -32,12 +32,9 @@ public class ListaMaghi {
 
     public static void print() {
 
-        String s = "";
-        for (int i = 0; i < listaMaghi.size(); i++) {
-            s = listaMaghi.get(i).toString() + '\n';
-            System.out.println();
-            System.out.println(s);
-        }
+            for (Mago m : listaMaghi) {
+                System.out.println(m);
+            }
     }//print
 
     public static Mago getMago(int i){
